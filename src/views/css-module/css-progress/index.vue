@@ -27,14 +27,7 @@
 </template>
 <script>
 export default {
-  name: 'home',
-  methods: {
-    triggerToProgressCss () {
-      this.$router.push({
-        name: 'cssProgress'
-      })
-    }
-  }
+  name: 'cssProgress'
 }
 </script>
 <style lang="less" scoped>

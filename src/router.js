@@ -14,6 +14,16 @@ export default new Router({
       path: '/cssProgress',
       name: 'cssProgress',
       component: () => import('@/views/css-module/css-progress')
+    },
+    {
+      path: '/blockJump',
+      name: 'blockJump',
+      component: () => import('@/views/css-module/block-jump')
+    },
+    {
+      path: '/cssLoading',
+      name: 'cssLoading',
+      component: () => import('@/views/css-module/css-loading')
     }
   ]
 })

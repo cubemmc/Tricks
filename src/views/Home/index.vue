@@ -1,9 +1,15 @@
 <template>
   <div class="container">
     <div class="background">
-      <div v-for="(item, index) in bubbleInfo" :key="index">
-        <div @click="triggerToProgressCss(index)" class="background-bubble" :style="{top: item.top, left: item.left, backgroundImage: `url(${require('../../assets/images/bubble'+(index+1)+'.jpg')})`}">
-          <span :style="{color: item.color}">{{item.title}}</span>
+      <div class="background-box">
+        <div @click="triggerToProgressCss(1)" class="background-bubble background-bubble1">
+          <span>css进度条</span>
+        </div>
+        <div @click="triggerToProgressCss(2)" class="background-bubble background-bubble2">
+          <span>css方块跳动</span>
+        </div>
+        <div @click="triggerToProgressCss" class="background-bubble background-bubble3">
+          <span>cssLoading</span>
         </div>
       </div>
     </div>
@@ -13,59 +19,52 @@
 import { randomColor } from '@/utils/common'
 export default {
   name: 'home',
-  data () {
-    return {
-      type: ['css进度条'],
-      bubbleInfo: []
-    }
-  },
-  mounted () {
-    let screenWidth = document.body.offsetWidth
-    let screenHeight = document.body.offsetHeight
-    this.type.map((item, index) => {
-      let top = Math.floor(Math.random() * (screenHeight - 110 - 40) + 40)
-      let left = Math.floor(Math.random() * (screenWidth - 110 - 40) + 40)
-      let color = randomColor()
-      this.bubbleInfo.push({
-        id: index,
-        top: top + 'px', 
-        left: left + 'px',
-        color,
-        title: item
-      })
-    })
-  },
   methods: {
     triggerToProgressCss (index) {
       let name = ''
       switch (index) {
-        case 0:
+        case 1:
           name = 'cssProgress'
           break
+        case 2:
+          name = 'blockJump'
+          break
+        case 3:
+          name = 'cssLoading'
+          break
       }
-      this.$router.push({
-        name
-      })
+      if (name) {
+        this.$router.push({
+          name
+        })
+      } else {
+        alert('敬请期待！')
+      }
     }
   }
 }
 </script>
 <style lang="less" scoped>
 .background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  padding: 40px;
+  width: 100wh;
+  min-height: 100vh;
   background: #eeeeee url(../../assets/images/background.jpg) no-repeat;
   background-position: 0 0;
   background-size: 100% 100%;
   z-index: 0;
+  box-sizing: border-box;
+  &-box {
+    position: relative;
+    height: 100px;
+  }
   &-bubble {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    top: 0;
+    left: 0;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -81,18 +80,27 @@ export default {
       font-size: 14px;
       color: #666;
       text-align: center;
+      word-break: break-all;
     }
     &:hover {
       width: 70px;
       height: 70px;
-      margin-top: -10px;
-      margin-left: -10px;
+      transform: translate(-10px, -10px);
       animation: none;
       z-index: 10;
       span {
         color: #555 !important;
       }
     }
+  }
+  &-bubble1 {}
+  &-bubble2 {
+    top: 0;
+    left: 90px;
+  }
+  &-bubble3 {
+    top: 0;
+    left: 180px;
   }
 }
 @keyframes bubble {
@@ -103,14 +111,11 @@ export default {
   50% {
     width: 70px;
     height: 70px;
-    margin-top: -10px;
-    margin-left: -10px;
+    transform: translate(-10px, -10px);
   }
   100% {
     width: 50px;
     height: 50px;
-    margin-top: 0;
-    margin-left: 0;
   }
 }
 .btn {

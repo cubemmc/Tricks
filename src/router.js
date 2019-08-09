@@ -24,6 +24,11 @@ export default new Router({
       path: '/cssLoading',
       name: 'cssLoading',
       component: () => import('@/views/css-module/css-loading')
+    },
+    {
+      path: '/according',
+      name: 'according',
+      component: () => import('@/views/css-module/according')
     }
   ]
 })

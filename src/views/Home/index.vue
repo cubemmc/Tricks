@@ -8,8 +8,11 @@
         <div @click="triggerToProgressCss(2)" class="background-bubble background-bubble2">
           <span>css方块跳动</span>
         </div>
-        <div @click="triggerToProgressCss" class="background-bubble background-bubble3">
+        <div @click="triggerToProgressCss(3)" class="background-bubble background-bubble3">
           <span>cssLoading</span>
+        </div>
+        <div @click="triggerToProgressCss(4)" class="background-bubble background-bubble4">
+          <span>无序列表之手风琴</span>
         </div>
       </div>
     </div>
@@ -31,6 +34,9 @@ export default {
           break
         case 3:
           name = 'cssLoading'
+          break
+        case 4:
+          name = 'according'
           break
       }
       if (name) {
@@ -93,13 +99,16 @@ export default {
       }
     }
   }
-  &-bubble1 {}
   &-bubble2 {
-    top: 0;
-    left: 90px;
+    top: 60px;
+    left: 60px;
   }
   &-bubble3 {
-    top: 0;
+    top: 120px;
+    left: 120px;
+  }
+  &-bubble4 {
+    top: 180px;
     left: 180px;
   }
 }

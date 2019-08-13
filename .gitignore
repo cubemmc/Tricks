@@ -18,5 +18,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+/dist
 package-lock.json
 

@@ -1,18 +1,24 @@
 <template>
   <div class="container">
-    <div class="background">
-      <div class="background-box">
-        <div @click="triggerToProgressCss(1)" class="background-bubble background-bubble1">
-          <span>css进度条</span>
-        </div>
-        <div @click="triggerToProgressCss(2)" class="background-bubble background-bubble2">
-          <span>css方块跳动</span>
-        </div>
-        <div @click="triggerToProgressCss(3)" class="background-bubble background-bubble3">
-          <span>cssLoading</span>
-        </div>
-        <div @click="triggerToProgressCss(4)" class="background-bubble background-bubble4">
-          <span>无序列表之手风琴</span>
+    <div class="header-container">
+      <span>css相关</span>
+    </div>
+    <div class="card-container">
+      <div class="card-content">
+        <div v-for="(item, index) in cssList" :key="index" class="card-item">
+          <div v-if="!item.isHide" @click="triggerToCssLink(item.id)">
+            <img :src="require('../../assets/images/css-source-imgs/' + item.cover)" alt="">
+            <div class="card-item__text">
+              <div class="card-item__text--box">
+                <div class="card-item__text--title text-ellipsis">{{item.title}}</div>
+                <div class="card-item__text--desc text-ellipsis">{{item.desc}}</div>
+              </div>
+            </div>
+          </div>
+          <div v-if="item.isHide" class="card-item__coding">
+            <div>{{item.title}}</div>
+            <div>开发中，敬请期待！</div>
+          </div>
         </div>
       </div>
     </div>
@@ -22,8 +28,48 @@
 import { randomColor } from '@/utils/common'
 export default {
   name: 'home',
+  data () {
+    return {
+      cssList: []
+    }
+  },
+  mounted () {
+    this.getList()
+  },
   methods: {
-    triggerToProgressCss (index) {
+    getList () {
+      this.cssList = [
+        {
+          id: 4,
+          cover: '2.png',
+          title: 'css特效之手风琴(无序列表)',
+          desc: 'css特效之手风琴(无序列表)',
+          isHide: true
+        },        
+        {
+          id: 1,
+          cover: '2.png',
+          title: 'css特效之css进度条',
+          desc: 'css特效之css进度条',
+          isHide: false
+        },        
+        {
+          id: 3,
+          cover: '2.png',
+          title: 'css动画之cssLoading',
+          desc: 'css动画之cssLoading',
+          isHide: false
+        },
+        {
+          id: 2,
+          cover: '1.png',
+          title: 'css动画之css方块跳动',
+          desc: 'css动画之css方块跳动',
+          isHide: false
+        }
+      ]
+    },
+    triggerToCssLink (index) {
       let name = ''
       switch (index) {
         case 1:
@@ -51,83 +97,88 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.background {
-  padding: 40px;
-  width: 100wh;
-  min-height: 100vh;
-  background: #eeeeee url(../../assets/images/background.jpg) no-repeat;
-  background-position: 0 0;
-  background-size: 100% 100%;
-  z-index: 0;
-  box-sizing: border-box;
-  &-box {
-    position: relative;
-    height: 100px;
-  }
-  &-bubble {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50px;
+.header {
+  &-container {
+    width: 100%;
     height: 50px;
-    border-radius: 50%;
-    background: #ffffff url(../../assets/images/bubble1.jpg) no-repeat;
+    background: #333333;
+    text-align: center;
+    line-height: 50px;
+    span {
+      font-size: 16px;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+  }
+}
+.card {
+  &-container {
+    padding: 50px 40px 100px;
+  }
+  &-content {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  &-item {
+    position: relative;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 200px;
+    height: 250px;
+    border-radius: 4px;
+    background: #80ecff url(../../assets/images/background.jpg) no-repeat;
     background-position: 0 0;
     background-size: 100% 100%;
-    box-shadow: 0 0 5px 0 rgb(51, 39, 39);
-    animation: bubble 2s ease infinite;
+    box-shadow: 0 0 10px 0 rgb(176, 191, 196);
+    transform-origin: 50% 50%;
+    overflow: hidden;
     cursor: pointer;
-    span {
-      display: block;
-      width: 50px;
-      font-size: 14px;
-      color: #666;
-      text-align: center;
-      word-break: break-all;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
-    &:hover {
-      width: 70px;
-      height: 70px;
-      transform: translate(-10px, -10px);
-      animation: none;
-      z-index: 10;
-      span {
-        color: #555 !important;
+    &__text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      &--box {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      &--title {
+        font-size: 15px;
+        color: #ffffff;
+      }
+      &--desc {
+        margin-top: 6px;
+        font-size: 12px;
+        color: #d8dad9;
       }
     }
+    &__coding {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      font-size: 16px;
+      color: #57a896;
+    }
   }
-  &-bubble2 {
-    top: 60px;
-    left: 60px;
+  &-item:hover {
+    transform: scaleX(1.1) scaleY(1.1);
   }
-  &-bubble3 {
-    top: 120px;
-    left: 120px;
-  }
-  &-bubble4 {
-    top: 180px;
-    left: 180px;
-  }
-}
-@keyframes bubble {
-  0% {
-    width: 50px;
-    height: 50px;
-  }
-  50% {
-    width: 70px;
-    height: 70px;
-    transform: translate(-10px, -10px);
-  }
-  100% {
-    width: 50px;
-    height: 50px;
-  }
-}
-.btn {
-  position: relative;
 }
 </style>

@@ -29,6 +29,11 @@ export default new Router({
       path: '/according',
       name: 'according',
       component: () => import('@/views/css-module/according')
+    },
+    {
+      path: '/cssRotate',
+      name: 'cssRotate',
+      component: () => import('@/views/css-module/css-rotate')
     }
   ]
 })

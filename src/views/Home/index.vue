@@ -40,6 +40,13 @@ export default {
     getList () {
       this.cssList = [
         {
+          id: 5,
+          cover: '5.png',
+          title: 'css特效之rotate',
+          desc: 'css特效之rotate',
+          isHide: false
+        },
+        {
           id: 4,
           cover: '2.png',
           title: 'css特效之手风琴(无序列表)',
@@ -48,7 +55,7 @@ export default {
         },        
         {
           id: 1,
-          cover: '2.png',
+          cover: '3.png',
           title: 'css特效之css进度条',
           desc: 'css特效之css进度条',
           isHide: false
@@ -83,6 +90,9 @@ export default {
           break
         case 4:
           name = 'according'
+          break
+        case 5:
+          name = 'cssRotate'
           break
       }
       if (name) {

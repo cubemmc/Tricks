@@ -34,6 +34,11 @@ export default new Router({
       path: '/cssRotate',
       name: 'cssRotate',
       component: () => import('@/views/css-module/css-rotate')
+    },
+    {
+      path: '/cssButtons',
+      name: 'cssButtons',
+      component: () => import('@/views/css-module/css-buttons')
     }
   ]
 })

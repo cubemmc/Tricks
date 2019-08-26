@@ -24,7 +24,7 @@
   flex-direction: column;
   position: relative;
   min-height: 100vh;
-  padding: 40px 0 40px 140px;
+  padding: 40px 0 40px 0px;
   background: #000;
 }
 

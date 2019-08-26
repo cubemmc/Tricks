@@ -5,19 +5,21 @@
     </div>
     <div class="card-container">
       <div class="card-content">
-        <div v-for="(item, index) in cssList" :key="index" class="card-item">
-          <div v-if="!item.isHide" @click="triggerToCssLink(item.id)">
-            <img :src="require('../../assets/images/css-source-imgs/' + item.cover)" alt="">
-            <div class="card-item__text">
-              <div class="card-item__text--box">
-                <div class="card-item__text--title text-ellipsis">{{item.title}}</div>
-                <div class="card-item__text--desc text-ellipsis">{{item.desc}}</div>
+        <div v-for="(item, index) in cssList" :key="index" class="flex-center card-item">
+          <div class="card-item-content">
+            <div v-if="!item.isHide" @click="triggerToCssLink(item.routeName)">
+              <img :src="require('../../assets/images/css-source-imgs/' + item.cover)" alt="">
+              <div class="card-item__text">
+                <div class="card-item__text--box">
+                  <div class="card-item__text--title text-ellipsis">{{item.title}}</div>
+                  <div class="card-item__text--desc text-ellipsis">{{item.desc}}</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div v-if="item.isHide" class="card-item__coding">
-            <div>{{item.title}}</div>
-            <div>开发中，敬请期待！</div>
+            <div v-if="item.isHide" class="card-item__coding">
+              <div>{{item.title}}</div>
+              <div>开发中，敬请期待！</div>
+            </div>
           </div>
         </div>
       </div>
@@ -40,61 +42,56 @@ export default {
     getList () {
       this.cssList = [
         {
+          id: 6,
+          cover: '5.jpg',
+          title: 'css特效之按钮悬浮特效',
+          desc: 'css特效之按钮悬浮特效',
+          isHide: true,
+          routeName: 'cssButtons'
+        },
+        {
           id: 5,
-          cover: '5.png',
+          cover: '5.jpg',
           title: 'css特效之rotate',
           desc: 'css特效之rotate',
-          isHide: false
+          isHide: false,
+          routeName: 'cssRotate'
         },
         {
           id: 4,
-          cover: '2.png',
+          cover: '2.jpg',
           title: 'css特效之手风琴(无序列表)',
           desc: 'css特效之手风琴(无序列表)',
-          isHide: true
+          isHide: true,
+          routeName: 'according'
         },        
         {
           id: 1,
-          cover: '3.png',
+          cover: '3.jpg',
           title: 'css特效之css进度条',
           desc: 'css特效之css进度条',
-          isHide: false
+          isHide: false,
+          routeName: 'cssProgress'
         },        
         {
           id: 3,
-          cover: '2.png',
+          cover: '2.jpg',
           title: 'css动画之cssLoading',
           desc: 'css动画之cssLoading',
-          isHide: false
+          isHide: false,
+          routeName: 'cssLoading'
         },
         {
           id: 2,
-          cover: '1.png',
+          cover: '1.jpg',
           title: 'css动画之css方块跳动',
           desc: 'css动画之css方块跳动',
-          isHide: false
+          isHide: false,
+          routeName: 'blockJump'
         }
       ]
     },
-    triggerToCssLink (index) {
-      let name = ''
-      switch (index) {
-        case 1:
-          name = 'cssProgress'
-          break
-        case 2:
-          name = 'blockJump'
-          break
-        case 3:
-          name = 'cssLoading'
-          break
-        case 4:
-          name = 'according'
-          break
-        case 5:
-          name = 'cssRotate'
-          break
-      }
+    triggerToCssLink (name) {
       if (name) {
         this.$router.push({
           name
@@ -131,19 +128,26 @@ export default {
     flex-wrap: wrap;
   }
   &-item {
-    position: relative;
-    margin-right: 30px;
+    flex-direction: column;
     margin-bottom: 30px;
-    width: 200px;
+    width: 215px;
     height: 250px;
-    border-radius: 4px;
-    background: #80ecff url(../../assets/images/background.jpg) no-repeat;
-    background-position: 0 0;
-    background-size: 100% 100%;
-    box-shadow: 0 0 10px 0 rgb(176, 191, 196);
-    transform-origin: 50% 50%;
-    overflow: hidden;
-    cursor: pointer;
+    &-content {
+      position: relative;
+      width: 200px;
+      height: 250px;
+      border-radius: 4px;
+      background: #80ecff url(../../assets/images/background.jpg) no-repeat;
+      background-position: 0 0;
+      background-size: 100% 100%;
+      box-shadow: 0 0 10px 0 rgb(176, 191, 196);
+      transform-origin: 50% 50%;
+      overflow: hidden;
+      cursor: pointer;
+      &:hover {
+        transform: scaleX(1.1) scaleY(1.1);
+      }
+    }
     img {
       position: absolute;
       top: 0;
@@ -186,9 +190,6 @@ export default {
       font-size: 16px;
       color: #57a896;
     }
-  }
-  &-item:hover {
-    transform: scaleX(1.1) scaleY(1.1);
   }
 }
 </style>

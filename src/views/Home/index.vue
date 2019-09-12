@@ -3,7 +3,7 @@
     <div class="header-container">
       <span>css相关</span>
     </div>
-    <div class="card-container">
+    <div class="flex-center-center card-container">
       <div class="card-content">
         <div v-for="(item, index) in cssList" :key="index" class="flex-center card-item">
           <div class="card-item-content">
@@ -120,12 +120,13 @@ export default {
 }
 .card {
   &-container {
-    padding: 50px 40px 100px;
+    padding: 50px 0 100px;
   }
   &-content {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    width: 1075px;
   }
   &-item {
     flex-direction: column;

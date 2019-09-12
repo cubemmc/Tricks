@@ -1,12 +1,7 @@
 <template>
   <div class="container">
-    <!-- 切换不同的loading样式按钮 -->
-    <!-- <div v-if="false" class="flex-center btns-box">
-      <button class="btns-item" :class="{'btns-current': type === 1}" @click="triggerToChangeType(1)">balls</button>
-      <button class="btns-item" :class="{'btns-current': type === 2}" @click="triggerToChangeType(2)">circle</button>
-      <button class="btns-item" :class="{'btns-current': type === 3}" @click="triggerToChangeType(3)">round</button>
-      <button class="btns-item" :class="{'btns-current': type === 4}" @click="triggerToChangeType(4)">pinwheel</button>
-    </div> -->
+    <div class="back_color"></div>
+    <backButton></backButton>
     <!-- rotate -->
     <div class="flex-center-center rotate1-box">
       <div class="flex-center-center rotate1-content">
@@ -19,50 +14,16 @@
     </div>
   </div>
 </template>
-<style lang="less" scoped>
-.container {
-  flex-direction: column;
-  position: relative;
-  min-height: 100vh;
-  padding: 40px 0 40px 0px;
-  background: #000;
+<script>
+import backButton from '@/components/BackButton'
+export default {
+  components: { backButton }
 }
-
-// 按钮样式
-/*.btns {
-  &-box {
-    flex-direction: column;
-    position: fixed;
-    top: 40px;
-    left: 40px;
-    padding: 20px 0;
-    width: 100px;
-    max-height: 500px;
-    background: #68ABAD;
-    overflow: hidden;
-    overflow-y: auto;
-  }
-  &-item {
-    width: 81px;
-    height: 46px;
-    border-radius: 5px;
-    background: #D1E5E6;
-    color: #7E9293;
-    font-size:16px;
-    cursor: pointer;
-    &:hover {
-      background: #fff;
-      color: #333;
-    }
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-  }
-  &-current {
-    background: #fff;
-  }
-}*/
-
+</script>
+<style lang="less" scoped>
+.back_color {
+  background: rgba(0, 0, 0, 1)
+}
 /** rotate1 样式 **/
 .rotate1 {
   &-box {

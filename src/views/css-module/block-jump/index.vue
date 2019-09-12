@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <div class="back_color"></div>
+    <backButton></backButton>
     <div class="block-box">
       <div class="block-item block-item1"></div>
       <div class="block-item block-item2"></div>
@@ -9,11 +11,17 @@
     </div>
   </div>
 </template>
+<script>
+import backButton from '@/components/BackButton'
+export default {
+  components: { backButton }
+}
+</script>
 <style lang="less" scoped>
 .block {
   &-box {
     position: relative;
-    margin-top: 100px;
+    margin-top: 250px;
     margin-left: 50%;
     width: 450px;
     height: 50px;

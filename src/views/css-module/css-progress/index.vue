@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <backButton></backButton>
     <!-- body下的进度条 -->
     <div class="content-box">
       <div class="title">琵琶行</div>
@@ -23,6 +24,12 @@
     </div>
   </div>
 </template>
+<script>
+import backButton from '@/components/BackButton'
+export default {
+  components: { backButton }
+}
+</script>
 <style lang="less" scoped>
 .container {
   position: relative;

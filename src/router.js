@@ -39,6 +39,11 @@ export default new Router({
       path: '/cssButtons',
       name: 'cssButtons',
       component: () => import('@/views/css-module/css-buttons')
+    },
+    {
+      path: '/cssRotatePhotos',
+      name: 'cssRotatePhotos',
+      component: () => import('@/views/css-module/css-rotate-photos')
     }
   ]
 })

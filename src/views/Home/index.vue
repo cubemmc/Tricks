@@ -42,6 +42,14 @@ export default {
     getList () {
       this.cssList = [
         {
+          id: 7,
+          cover: '5.jpg',
+          title: 'css动画之3D旋转相册',
+          desc: 'css动画之3D旋转相册',
+          isHide: false,
+          routeName: 'cssRotatePhotos'
+        },
+        {
           id: 6,
           cover: '5.jpg',
           title: 'css特效之按钮悬浮特效',

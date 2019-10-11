@@ -2,57 +2,57 @@
   <div class="container">
     <div class="back_color"></div>
     <backButton></backButton>
-    <div class="flex">
-      <div class="btns-box">
-        <div class="flex-center btns-content">
-          <button class="btns-item" :class="{'btns-current': type === 1}" @click="triggerToChangeType(1)">balls</button>
-          <button class="btns-item" :class="{'btns-current': type === 2}" @click="triggerToChangeType(2)">circle</button>
-          <button class="btns-item" :class="{'btns-current': type === 3}" @click="triggerToChangeType(3)">round</button>
-          <button class="btns-item" :class="{'btns-current': type === 4}" @click="triggerToChangeType(4)">pinwheel</button>
+    <!-- 左侧按钮 -->
+    <div class="btns-box">
+      <div class="flex-center btns-content">
+        <button class="btns-item" :class="{'btns-current': type === 1}" @click="triggerToChangeType(1)">balls</button>
+        <button class="btns-item" :class="{'btns-current': type === 2}" @click="triggerToChangeType(2)">circle</button>
+        <button class="btns-item" :class="{'btns-current': type === 3}" @click="triggerToChangeType(3)">round</button>
+        <button class="btns-item" :class="{'btns-current': type === 4}" @click="triggerToChangeType(4)">pinwheel</button>
+      </div>
+    </div>
+    <!-- 右侧效果 -->
+    <div class="flex-center-center loading-content">
+      <!-- 切换不同的loading样式按钮 -->
+      <!-- loading1 -->
+      <div v-if="type === 1" class="flex-center-center loading1-box">
+        <div class="flex-center-center loading1-content">
+          <div class="loading1-roll loading1-roll1">
+            <div></div>
+          </div>
+          <div class="loading1-roll loading1-roll2">
+            <div></div>
+          </div>
+          <div class="loading1-roll loading1-roll3">
+            <div></div>
+          </div>
+          <div class="loading1-roll loading1-roll4">
+            <div></div>
+          </div>
         </div>
       </div>
-      <div class="flex-center-center" style="flex-grow: 1">
-        <!-- 切换不同的loading样式按钮 -->
-        <!-- loading1 -->
-        <div v-if="type === 1" class="flex-center-center loading1-box">
-          <div class="flex-center-center loading1-content">
-            <div class="loading1-roll loading1-roll1">
-              <div></div>
-            </div>
-            <div class="loading1-roll loading1-roll2">
-              <div></div>
-            </div>
-            <div class="loading1-roll loading1-roll3">
-              <div></div>
-            </div>
-            <div class="loading1-roll loading1-roll4">
-              <div></div>
-            </div>
-          </div>
+      <!-- loading2 -->
+      <div v-if="type === 2" class="flex-center-center loading2-box">
+        <div class="flex-center-center loading2-content">
+          <div class="loading2-lgCircle"></div>
+          <div class="loading2-smCircle"></div>
         </div>
-        <!-- loading2 -->
-        <div v-if="type === 2" class="flex-center-center loading2-box">
-          <div class="flex-center-center loading2-content">
-            <div class="loading2-lgCircle"></div>
-            <div class="loading2-smCircle"></div>
-          </div>
+      </div>
+      <!-- loading3 -->
+      <div v-if="type === 3" class="flex-center-center loading3-box">
+        <div class="flex-center-center loading3-content">
+          <div class="loading3-dotCircle"></div>
         </div>
-        <!-- loading3 -->
-        <div v-if="type === 3" class="flex-center-center loading3-box">
-          <div class="flex-center-center loading3-content">
-            <div class="loading3-dotCircle"></div>
-          </div>
-        </div>
-        <!-- loading4 -->
-        <div v-if="type === 4" class="flex-center-center loading4-box">
-          <div class="flex-center-center loading4-content">
-            <!--风车3部件-->
-            <div class="loading4-pinwheel1"></div>   
-            <div class="loading4-pinwheel2"></div>
-            <div class="loading4-pinwheel3"></div>
-            <!--动画部分-->
-            <div class="loading4-pin"></div>  
-          </div>
+      </div>
+      <!-- loading4 -->
+      <div v-if="type === 4" class="flex-center-center loading4-box">
+        <div class="flex-center-center loading4-content">
+          <!--风车3部件-->
+          <div class="loading4-pinwheel1"></div>   
+          <div class="loading4-pinwheel2"></div>
+          <div class="loading4-pinwheel3"></div>
+          <!--动画部分-->
+          <div class="loading4-pin"></div>  
         </div>
       </div>
     </div>
@@ -78,21 +78,33 @@ export default {
 // 按钮样式
 .btns {
   &-box {
-    flex-shrink: 0;
-    padding: 120px 50px 40px 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 210px;
+    height: 100vh;
+    padding: 150px 50px 40px 60px;
+    overflow: hidden;
+    box-sizing: border-box;
   }
   &-content {
     flex-direction: column;
-    width: 100px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
   }
   &-item {
-    width: 81px;
+    flex-shrink: 0;
+    width: 100%;
     height: 46px;
     border-radius: 5px;
     background: #D1E5E6;
     color: #7E9293;
     font-size:16px;
     cursor: pointer;
+    &::-webkit-scrollbar {
+      visibility: none;
+    }
     &:hover {
       background: #fff;
       color: #333;
@@ -104,6 +116,9 @@ export default {
   &-current {
     background: #fff;
   }
+}
+.loading-content {
+  margin-left: 210px;
 }
 
 /** loading1样式 **/

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="flex-center-center container">
     <div class="back_color"></div>
     <backButton></backButton>
     <div class="block-box">
@@ -18,14 +18,14 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.container {
+  height: 100vh;
+}
 .block {
   &-box {
     position: relative;
-    margin-top: 250px;
-    margin-left: 50%;
     width: 450px;
     height: 50px;
-    transform: translateX(-50%);
   }
   &-item {
     position: absolute;

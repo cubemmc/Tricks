@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <backButton></backButton>
+    <backButton backgroundColor="rgba(0, 0, 0, 0.3)"></backButton>
     <!-- body下的进度条 -->
     <div class="content-box">
       <div class="title">琵琶行</div>

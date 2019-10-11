@@ -1,16 +1,22 @@
 <template>
   <div class="button-content">
-    <div @click="triggerToBack" class="button-box">
-      <div class="button-triggle"></div>
-      <div class="button-block button-block1"></div>
-      <div class="button-block button-block2"></div>
-      <div class="button-angle"></div>
+    <div @click="triggerToBack" class="button-box" :style="{backgroundColor: backgroundColor}">
+      <div class="button-triggle" :style="{borderColor: iconColor}"></div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: {},
+  props: {
+    backgroundColor: {
+      type: String,
+      default: 'rgba(255, 255, 255, 0.5)'
+    },
+    iconColor: {
+      type: String,
+      default: 'rgba(255, 255, 255, 1)'
+    }
+  },
   methods: {
     triggerToBack () {
       this.$router.go(-1)
@@ -30,54 +36,26 @@ export default {
     position: relative;
     width: 50px;
     height: 50px;
-    background: #49C9B4;
-    border-radius: 10px;
-    box-shadow: 1px 1px 0 0 #328B7E;
-    transition: all .1s linear;
+    border-radius: 50%;
+    transition: transform .1s linear;
+    opacity: 0.4;
     cursor: pointer;
     &:hover {
+      opacity: 1;
       transform: scale(1.1);
     }
   }
   &-triggle {
     position: absolute;
-    top: 7px;
-    left: -2px;
-    border: 10px solid transparent;
-    border-right-color: #ffffff;
-  }
-  &-block {
-    position: absolute;
-    left: 13px;
+    top: 17px;
+    left: 20px;
     width: 12px;
-    height: 10px;
-    background: #ffffff;
-  }
-  &-block1 {
-    top: 12px;
-  }
-  &-block2 {
-    top: 28px;
-  }
-  &-angle {
-    display: inline-block;
-    position: absolute;
-    top: 12px;
-    left: 25px;
-    width: 13px;
-    height: 26px;
-    background: #ffffff;
-    border-radius: 0 13px 13px 0;
-    &:after {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 0;
-      width: 3px;
-      height: 6px;
-      background: #49C9B4;
-      border-radius: 0 3px 3px 0;
-    }
+    height: 12px;
+    border: 2px solid transparent;
+    border-right-color: transparent !important;
+    border-bottom-color: transparent !important;
+    transform-origin: 50% 50%;
+    transform: rotateZ(-45deg);
   }
 }
 </style>

@@ -16,7 +16,6 @@ module.exports = {
     // "no-useless-return": 0,
     quotes: [1, "single"],
     singleQuote: true,
-    semi: false,
     // "space-before-function-paren": [0, "always"],
   },
   parserOptions: {

@@ -31,4 +31,3 @@ jobs:
         FOLDER: dist
         REPOSITORY_NAME: cubemmc/cubemmc.github.io
         TARGET_FOLDER: Tricks
-    

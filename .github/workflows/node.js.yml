@@ -29,6 +29,6 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.HOME_SECRET }}
         BRANCH: master
         FOLDER: dist
-        REPOSITORY_NAME: cubemmc/cubemc.github.io
+        REPOSITORY_NAME: cubemmc/cubemmc.github.io
         TARGET_FOLDER: github-actions-demo
     
